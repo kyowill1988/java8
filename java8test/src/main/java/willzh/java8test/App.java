@@ -46,5 +46,12 @@ public class App
     		System.out.println(apple);    		
     	}
         
+    	List<Apple> filterResultThree = AppleFilter.filterApples(inventory,(Apple a)-> "Red".equals(a.getColor()));
+    	System.out.println("filterResultThree:");
+    	for(Apple apple : filterResultThree){
+    		System.out.println(apple);    		
+    	}
+    	
+    	
     }
 }
