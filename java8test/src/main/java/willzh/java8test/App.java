@@ -2,21 +2,12 @@ package willzh.java8test;
 
 import java.util.ArrayList;
 import java.util.List;
+import static java.util.stream.Collectors.toList;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
-    {
-        //System.out.println( "Hello World!" );
-        
-//        File[] hiddenFiles = new File(".").listFiles(File:: isHidden);
-//        for(File f : hiddenFiles){
-//        	System.out.println(f.getName());        	
-//        }        
+    {     
         
     	List<Apple> inventory = new ArrayList<>();
     	Apple appleOne = new Apple();
@@ -48,7 +39,17 @@ public class App
         
     	List<Apple> filterResultThree = AppleFilter.filterApples(inventory,(Apple a)-> "Red".equals(a.getColor()));
     	System.out.println("filterResultThree:");
-    	for(Apple apple : filterResultThree){
+    	filterResultThree.forEach((Apple a)->System.out.println(a));
+    	
+    	List<Apple> filterResultFour = inventory.stream().filter((Apple a)->a.getWeight() > 150).collect(toList());
+    	System.out.println("filterResultFour:");
+    	for(Apple apple : filterResultFour){
+    		System.out.println(apple);    		
+    	}
+    	
+    	List<Apple> filterResultFive = inventory.parallelStream().filter((Apple a)->a.getWeight() > 150).collect(toList());
+    	System.out.println("filterResultFive:");
+    	for(Apple apple : filterResultFive){
     		System.out.println(apple);    		
     	}
     	
