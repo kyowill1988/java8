@@ -3,6 +3,9 @@ package willzh.java8test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.omg.Messaging.SyncScopeHelper;
+
 import static java.util.stream.Collectors.toList;
 
 public class App 
@@ -75,6 +78,12 @@ public class App
     	
     	Thread t = new Thread(()->System.out.println("Hello world"));
     	t.start();
+    	
+    	ConsumerTest.ForEach(Arrays.asList(1,2,3,4,5), (Integer i)->System.out.println(i));
+    	
+    	List<Integer> ii =  FunctionTest.map(Arrays.asList("What","doesnot","kill","you","make","you","stronger"),
+    			(String s)->s.length());
+    	ii.forEach((Integer i)->System.out.println(i));
     	
     	
     }
