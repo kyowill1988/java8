@@ -1,7 +1,11 @@
 package willzh.java8test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import org.omg.Messaging.SyncScopeHelper;
+
 import static java.util.stream.Collectors.toList;
 
 public class App 
@@ -52,6 +56,34 @@ public class App
     	for(Apple apple : filterResultFive){
     		System.out.println(apple);    		
     	}
+    	
+    	List<Apple> filterResultSix = helper.filter(inventory, (Apple p)->"Red".equals(p.getColor()));    	
+    	System.out.println("filterResultSix:");
+    	filterResultSix.forEach((Apple a)->System.out.println(a));
+    	
+    	List<Integer> numbers = Arrays.asList(new Integer(1),new Integer(2),new Integer(3));    	
+    	List<Integer> filterResultSeven = helper.filter(numbers, (Integer i)-> i % 2 != 0);    	
+    	System.out.println("filterResultSeven:");
+    	filterResultSeven.forEach((Integer i)->System.out.println(i.intValue()));
+    	
+    	List<Integer> chaosNumbers = Arrays.asList(new Integer(100),new Integer(90),new Integer(200)); 
+    	
+    	Thread t1 = new Thread(new Runnable(){
+    		public void run(){
+    			System.out.println("How are you");
+    		}    		
+    	});
+    	
+    	t1.start();
+    	
+    	Thread t = new Thread(()->System.out.println("Hello world"));
+    	t.start();
+    	
+    	ConsumerTest.ForEach(Arrays.asList(1,2,3,4,5), (Integer i)->System.out.println(i));
+    	
+    	List<Integer> ii =  FunctionTest.map(Arrays.asList("What","doesnot","kill","you","make","you","stronger"),
+    			(String s)->s.length());
+    	ii.forEach((Integer i)->System.out.println(i));
     	
     	
     }
