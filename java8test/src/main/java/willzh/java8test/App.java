@@ -53,6 +53,9 @@ public class App
 		Function<Integer,Integer> g2 = x->x*2;
 		Function<Integer,Integer> h2 = f2.compose(g2);
 		System.out.println("h2="+h2.apply(1));//print 3
+		
+		
+		
 
 		List<Apple> filterResultOne = AppleFilter.filterApples(inventory,AppleFilter:: isGreenApple);
 		System.out.println("filterResultOne:");

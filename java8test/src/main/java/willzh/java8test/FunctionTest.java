@@ -2,6 +2,7 @@ package willzh.java8test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.DoubleFunction;
 import java.util.function.Function;
 
 public class FunctionTest {
@@ -17,4 +18,9 @@ public class FunctionTest {
 		return result;		
 	}
 	
+	public static double integrate(DoubleFunction<Double> f,double a,double b){
+		return (f.apply(a) + f.apply(b)) * (b - a)/2.0;
+	}
+	
+
 }
