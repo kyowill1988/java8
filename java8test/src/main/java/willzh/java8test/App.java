@@ -29,6 +29,8 @@ public class App
     	appleThree.setWeight((double)50);
     	inventory.add(appleThree);
     	
+    	
+    	
     	List<Apple> filterResultOne = AppleFilter.filterApples(inventory,AppleFilter:: isGreenApple);
     	System.out.println("filterResultOne:");
     	for(Apple apple : filterResultOne){
@@ -84,6 +86,10 @@ public class App
     	List<Integer> ii =  FunctionTest.map(Arrays.asList("What","doesnot","kill","you","make","you","stronger"),
     			(String s)->s.length());
     	ii.forEach((Integer i)->System.out.println(i));
+    	
+    	
+    	Runnable r = ()->{System.out.println("How do you do~");};
+    	r.run();
     	
     	
     }
