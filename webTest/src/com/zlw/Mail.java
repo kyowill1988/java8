@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.websocket.Session;
 
-import org.apache.tomcat.jni.Address;
-
+import com.sun.xml.internal.org.jvnet.mimepull.MIMEMessage;
+import com.sun.xml.internal.ws.api.message.Message;
 
 /**
  * mail test
@@ -29,6 +29,9 @@ public class Mail extends HttpServlet {
 		props.put("mail.host", "smtp.qq.com");
 		props.put("mail.transport.protocol", "smtp");
 		props.put("mail.smtp.auth", "true");
+		
+		
+		
 		
 		super.doPost(req, resp);
 	}

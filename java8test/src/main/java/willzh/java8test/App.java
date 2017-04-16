@@ -6,13 +6,17 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
+import javax.mail.MessagingException;
+
 import static java.util.stream.Collectors.toList;
 
 public class App 
 {
-	public static void main( String[] args )
+	public static void main( String[] args ) throws MessagingException
 	{     
-
+		Mail.sendMail();
+		
+		
 		List<Apple> inventory = new ArrayList<>();
 		Apple appleOne = new Apple();
 		appleOne.setColor("Red");
