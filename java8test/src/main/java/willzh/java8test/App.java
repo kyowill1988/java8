@@ -9,14 +9,12 @@ import java.util.function.Function;
 import javax.mail.MessagingException;
 
 import static java.util.stream.Collectors.toList;
+import static java.util.Comparator.comparing;
 
 public class App 
 {
 	public static void main( String[] args ) throws MessagingException
-	{     
-		Mail.sendMail();
-		
-		
+	{     		
 		List<Apple> inventory = new ArrayList<>();
 		Apple appleOne = new Apple();
 		appleOne.setColor("Red");
@@ -118,7 +116,17 @@ public class App
 
 		Runnable r = ()->{System.out.println("How do you do~");};
 		r.run();
-
+		
+		List<String> appleColorNames = inventory.stream()
+		.filter(d->d.getWeight() > 10)
+		.sorted(comparing(Apple::getWeight))
+		.map(Apple::getColor)
+		.distinct()
+		.collect(toList());
+		
+		appleColorNames.forEach((String name)->System.out.println(name));
+		
+		
 
 	}
 }
