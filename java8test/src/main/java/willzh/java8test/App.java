@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 import javax.mail.MessagingException;
 
@@ -125,6 +126,29 @@ public class App
 		.collect(toList());
 		
 		appleColorNames.forEach((String name)->System.out.println(name));
+		
+		List<Dish> menu = Arrays.asList(
+				new Dish("pork",false,800,Dish.Type.MEAT),
+				new Dish("beef",false,700,Dish.Type.MEAT),
+				new Dish("chicken",false,400,Dish.Type.MEAT),
+				new Dish("french fries",true,530,Dish.Type.OTHER),
+				new Dish("rice",true,350,Dish.Type.OTHER),
+				new Dish("season fruit",true,120,Dish.Type.OTHER),
+				new Dish("pizza",true,550,Dish.Type.OTHER)
+				);
+		
+		//前三个高热量的菜名
+		List<String> filterDishNames = menu.stream().filter(d->d.getCalories() > 300)
+			.limit(3)
+			.map(Dish::getName)
+			.collect(toList());
+		filterDishNames.forEach(System.out::println);
+		filterDishNames.forEach(System.out::println);
+		
+		List<String> streamTest = filterDishNames;
+		Stream<String> stream = streamTest.stream();
+		stream.forEach(System.out::println);
+        //stream.forEach(System.out::println); 流已被操作，只能遍历一次
 		
 		
 
