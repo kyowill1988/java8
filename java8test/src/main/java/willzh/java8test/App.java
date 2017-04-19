@@ -16,6 +16,8 @@ public class App
 {
 	public static void main( String[] args ) throws MessagingException
 	{     		
+		StringTest.tryIndexOf();
+		
 		List<Apple> inventory = new ArrayList<>();
 		Apple appleOne = new Apple();
 		appleOne.setColor("Red");
@@ -149,6 +151,7 @@ public class App
 		Stream<String> stream = streamTest.stream();
 		stream.forEach(System.out::println);
         //stream.forEach(System.out::println); 流已被操作，只能遍历一次
+		
 		
 		
 
