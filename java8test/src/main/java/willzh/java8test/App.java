@@ -16,6 +16,35 @@ public class App
 {
 	public static void main( String[] args ) throws MessagingException
 	{     		
+		System.out.println("main主线程开始");
+		
+		ThreadTestImplements t11 = new ThreadTestImplements("t11");
+		ThreadTestImplements t21 = new ThreadTestImplements("t21");
+		t11.start();
+		t21.start();
+		
+		try{
+			t11.join();		
+		}catch(InterruptedException ex){
+			ex.printStackTrace();
+		}
+		
+		try{
+			t21.join();			
+		}catch(InterruptedException ex){
+			ex.printStackTrace();
+		}
+		
+		new Thread(new ThreadTestForRunnable("A")).start();
+		new Thread(new ThreadTestForRunnable("B")).start();
+		
+		ThreadTestForRunnable my = new ThreadTestForRunnable();
+		new Thread(my,"C").start();
+		new Thread(my,"D").start();
+		new Thread(my,"E").start();
+		
+		System.out.println("main主线程结束");
+		
 		StringTest.tryIndexOf();
 		
 		List<Apple> inventory = new ArrayList<>();
