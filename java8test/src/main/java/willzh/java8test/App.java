@@ -9,13 +9,17 @@ import java.util.stream.Stream;
 
 import javax.mail.MessagingException;
 
+import willzh.java8test.Dish.Type;
+
 import static java.util.stream.Collectors.toList;
+
 import static java.util.Comparator.comparing;
 
 public class App 
 {
 	public static void main( String[] args ) throws MessagingException
 	{     		
+		
 		System.out.println("main主线程开始");
 		
 		ThreadTestImplements t11 = new ThreadTestImplements("t11");
@@ -174,7 +178,60 @@ public class App
 			.map(Dish::getName)
 			.collect(toList());
 		filterDishNames.forEach(System.out::println);
-		filterDishNames.forEach(System.out::println);
+		
+		menu.stream()
+			.filter(d->d.getCalories()> 20)
+			.map(Dish::getName)
+			.skip(3)
+			.forEach(System.out::println)
+			;
+		
+		//筛选出前两个荤菜
+		System.out.println("筛选出前两个荤菜");
+		menu.stream()
+		.filter(d->d.getType() == Dish.Type.MEAT)
+		.map(Dish::getName)
+		.limit(2)
+		.forEach(System.out::println)
+		;
+	
+		menu.stream()
+			.map(Dish::getName)
+			.map(String::length)
+			.forEach(System.out::println)
+			;
+		
+		//扁平化
+		System.out.println("扁平");
+		menu.stream()
+			.map(Dish::getName)
+			.map(w->w.split(""))
+			.flatMap(Arrays::stream)
+			.distinct()
+			.forEach(System.out::println);
+		
+		System.out.println("All less than 1000 calories? "+menu.stream().allMatch(d->d.getCalories() < 1000));
+		System.out.println("All less than 100 calories? "+menu.stream().allMatch(d->d.getCalories() < 100));
+		
+		menu.stream()
+			.filter(Dish::isVegetarian)
+			.findAny()
+			.ifPresent(d->System.out.println(d.getName()))
+			;
+			
+		
+		
+		
+		
+		List<Integer> numbers2 = Arrays.asList(1,2,3,4,5);
+		numbers2.stream()
+			   .map(n->n*n)
+			   .forEach(System.out::println);
+		
+		
+		
+		
+		
 		
 		List<String> streamTest = filterDishNames;
 		Stream<String> stream = streamTest.stream();
