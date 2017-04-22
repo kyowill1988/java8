@@ -228,9 +228,17 @@ public class App
 			   .map(n->n*n)
 			   .forEach(System.out::println);
 		
+		System.out.println(numbers2.stream().reduce(1,(a,b)->a*b));
+		System.out.println(numbers2.stream().reduce(0,Integer::sum));
 		
+		System.out.println(numbers2.stream().reduce(Integer::max));
+		System.out.println(numbers2.stream().reduce(Integer::min));
 		
-		
+		System.out.println(numbers2.size());
+		System.out.println(numbers2.stream()
+			.map(d->1)
+			.reduce(0,(a,b)->a+b));
+		System.out.println(numbers2.stream().count());
 		
 		
 		List<String> streamTest = filterDishNames;
