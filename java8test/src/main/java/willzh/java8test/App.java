@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import javax.mail.MessagingException;
@@ -12,6 +13,7 @@ import javax.mail.MessagingException;
 import willzh.java8test.Dish.Type;
 
 import static java.util.stream.Collectors.toList;
+
 
 import static java.util.Comparator.comparing;
 
@@ -233,6 +235,7 @@ public class App
 		
 		System.out.println(numbers2.stream().reduce(Integer::max));
 		System.out.println(numbers2.stream().reduce(Integer::min));
+		System.out.println(numbers2.stream().reduce(Integer::min).orElse(0));
 		
 		System.out.println(numbers2.size());
 		System.out.println(numbers2.stream()
@@ -240,6 +243,22 @@ public class App
 			.reduce(0,(a,b)->a+b));
 		System.out.println(numbers2.stream().count());
 		
+		IntStream ns = IntStream.rangeClosed(1, 5);
+	    System.out.println("factorial="+ns.reduce(1,(a,b)->a*b));
+	    
+	    Stream<int[]> pythagoreanTriples =
+	    IntStream.rangeClosed(1, 100).boxed()
+	    	.flatMap(a-> IntStream.rangeClosed(1, 100)
+	    	    	.filter(b->Math.sqrt(a*a+b*b) % 1 == 0)
+	    	    	.mapToObj(b->new int[]{a,b,(int)Math.sqrt(a*a+b*b)}));
+	    
+	    //TODO DEBUG pythagoreanTriples.forEach(t->System.out.println(t[0]+","+t[1]+","+t[2]));
+	    Stream.iterate(1, n->n +2)
+	    	.limit(10)
+	    	.forEach(System.out::println);
+	    
+	    
+	    
 		
 		List<String> streamTest = filterDishNames;
 		Stream<String> stream = streamTest.stream();
