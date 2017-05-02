@@ -10,17 +10,21 @@ import java.util.stream.Stream;
 
 import javax.mail.MessagingException;
 
+import freemarker.template.TemplateException;
 import willzh.java8test.Dish.Type;
 
 import static java.util.stream.Collectors.toList;
 
+import java.io.IOException;
 
 import static java.util.Comparator.comparing;
 
 public class App 
 {
-	public static void main( String[] args ) throws MessagingException
+	public static void main( String[] args ) throws MessagingException, IOException, TemplateException
 	{     		
+		FreemarkerTest freemarkerTest = new FreemarkerTest();
+		freemarkerTest.foo();
 		
 		System.out.println("main主线程开始");
 		
