@@ -19,10 +19,21 @@ import java.io.IOException;
 
 import static java.util.Comparator.comparing;
 
+/**
+ * 
+ * @author "willzh"
+ * willzh
+ */
 public class App 
 {
 	public static void main( String[] args ) throws MessagingException, IOException, TemplateException
 	{     		
+		ABase ab = new ABase();
+		System.out.println(ab.getId());
+		
+		ABase bb = ab;
+		System.out.println(bb.getId());
+		
 		FreemarkerTest freemarkerTest = new FreemarkerTest();
 		freemarkerTest.foo();
 		
