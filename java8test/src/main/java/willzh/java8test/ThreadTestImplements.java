@@ -1,5 +1,6 @@
 package willzh.java8test;
 
+
 public class ThreadTestImplements extends Thread {
 		
 	private String name;
