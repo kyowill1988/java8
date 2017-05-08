@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -179,6 +181,14 @@ public class App
 		.map(Apple::getColor)
 		.distinct()
 		.collect(toList());
+		
+		System.out.println("TestCount:"+inventory.stream().count());
+		Double totalWeight = inventory.stream().map(Apple::getWeight).reduce(Double::sum).get();
+		System.out.println("totalWeight="+totalWeight);
+		
+		Map<String, List<Apple>> otherApples = inventory.stream().collect(Collectors.groupingBy(Apple::getColor));
+		
+		
 		
 		appleColorNames.forEach((String name)->System.out.println(name));
 		
