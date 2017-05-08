@@ -11,7 +11,6 @@ import java.util.stream.Stream;
 import javax.mail.MessagingException;
 
 import freemarker.template.TemplateException;
-import willzh.java8test.Dish.Type;
 
 import static java.util.stream.Collectors.toList;
 
@@ -21,8 +20,12 @@ import static java.util.Comparator.comparing;
 
 /**
  * 
- * @author "willzh"
- * willzh
+ * All rights Reserved, Designed By www.tydic.com
+ * @Title:  App.java   
+ * @Package willzh.java8test   
+ * @Description: 测试代码   
+ * @author: willzh     
+ * @Copyright: 2017 www.tydic.com Inc. All rights reserved.
  */
 public class App 
 {
