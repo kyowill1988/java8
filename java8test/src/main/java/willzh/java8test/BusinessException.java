@@ -4,7 +4,7 @@ package willzh.java8test;
  * 业务逻辑异常类
  *
  */
-public class BusinessException extends Exception {
+public class BusinessException extends RuntimeException {
 
 	public BusinessException() {
 		super();
