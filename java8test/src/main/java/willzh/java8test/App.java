@@ -35,8 +35,9 @@ public class App
 	{     		
 		ABase ab = new ABase();
 		System.out.println(ab.getId());
-		
+		//reflection
 		System.out.println(ab.getClass());
+	
 		
 		ABase bb = ab;
 		System.out.println(bb.getId());
