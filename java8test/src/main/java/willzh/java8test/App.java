@@ -37,7 +37,7 @@ public class App
 		System.out.println(ab.getId());
 		//reflection
 		System.out.println(ab.getClass());
-	    //what to do 
+	    //test batch command
 		
 		ABase bb = ab;
 		System.out.println(bb.getId());
