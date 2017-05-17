@@ -39,9 +39,31 @@ public class App
 		System.out.println(ab.getClass());
 	    //test batch command
 		//twice one two three
+		//there is a class named class
+		Class c1 = ABase.class;
+		try {
+			Class c3 = Class.forName("willzh.java8test.ABase");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			ABase abc = (ABase)c1.newInstance();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		ABase bb = ab;
 		System.out.println(bb.getId());
+		
+		Class c2 = bb.getClass();
+		System.out.println(c1==c2);
 		
 		FreemarkerTest freemarkerTest = new FreemarkerTest();
 		freemarkerTest.foo();
