@@ -33,6 +33,9 @@ public class App
 {
 	public static void main( String[] args ) throws MessagingException, IOException, TemplateException
 	{     		
+		SwitchTest.foo();
+		
+		
 		ABase ab = new ABase();
 		System.out.println(ab.getId());
 		//reflection
