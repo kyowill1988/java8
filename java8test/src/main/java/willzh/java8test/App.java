@@ -17,6 +17,7 @@ import freemarker.template.TemplateException;
 import static java.util.stream.Collectors.toList;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.security.MessageDigest;
 
 import static java.util.Comparator.comparing;
@@ -34,8 +35,18 @@ public class App
 {
 	public static void main( String[] args ) throws MessagingException, IOException, TemplateException, InstantiationException, IllegalAccessException
 	{     		
-		ReflectionTest.foo();
+		PrintTest test = new PrintTest();
+		Class ctest = test.getClass();
+		try {
+			test.print(1, 1);
+			Method method = ctest.getMethod("print", int.class,int.class);
+			method.invoke(test, 1,1);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		} 
 		
+		ReflectionTest.foo();
 		IntegerTest.foo();
 		BigDecimalTest.foo();
 		SwitchTest.foo();
