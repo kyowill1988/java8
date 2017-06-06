@@ -32,12 +32,22 @@ import static java.util.Comparator.comparing;
  */
 public class App 
 {
-	public static void main( String[] args ) throws MessagingException, IOException, TemplateException
+	public static void main( String[] args ) throws MessagingException, IOException, TemplateException, InstantiationException, IllegalAccessException
 	{     		
-		
+		IntegerTest.foo();
 		BigDecimalTest.foo();
-		
 		SwitchTest.foo();
+		
+		//String workerName = "willzh.java8test.WordWorker";
+		String workerName = "willzh.java8test.ExcelWorker";
+		
+		try {
+			Class worker = Class.forName(workerName);
+			OfficeAble officeWorker = (OfficeAble) worker.newInstance(); 
+			officeWorker.start();
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
 		
 		ABase ab = new ABase();
 		System.out.println(ab.getId());
