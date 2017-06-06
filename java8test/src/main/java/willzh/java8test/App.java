@@ -17,6 +17,7 @@ import freemarker.template.TemplateException;
 import static java.util.stream.Collectors.toList;
 
 import java.io.IOException;
+import java.security.MessageDigest;
 
 import static java.util.Comparator.comparing;
 
@@ -33,8 +34,10 @@ public class App
 {
 	public static void main( String[] args ) throws MessagingException, IOException, TemplateException
 	{     		
-		SwitchTest.foo();
 		
+		BigDecimalTest.foo();
+		
+		SwitchTest.foo();
 		
 		ABase ab = new ABase();
 		System.out.println(ab.getId());
