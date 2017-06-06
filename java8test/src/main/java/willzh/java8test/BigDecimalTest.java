@@ -37,5 +37,11 @@ public class BigDecimalTest {
 		BigDecimal interest3 = amount.multiply(rate3).setScale(4, RoundingMode.HALF_EVEN);
 		System.out.println("interest3 = " + interest3);
 		
+		//BigDecimal 常量
+		System.out.println("zero = "+BigDecimal.ZERO);
+		System.out.println("one = "+BigDecimal.ONE);
+		System.out.println("ten = "+BigDecimal.TEN);
+		
+		
 	}
 }
