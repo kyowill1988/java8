@@ -34,6 +34,8 @@ public class App
 {
 	public static void main( String[] args ) throws MessagingException, IOException, TemplateException, InstantiationException, IllegalAccessException
 	{     		
+		ReflectionTest.foo();
+		
 		IntegerTest.foo();
 		BigDecimalTest.foo();
 		SwitchTest.foo();
