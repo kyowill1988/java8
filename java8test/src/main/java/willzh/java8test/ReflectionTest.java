@@ -18,5 +18,12 @@ public class ReflectionTest {
 		
 	}
 	
+	public static void foo1(){
+		
+		
+	}
 	
 }
+
+
+
