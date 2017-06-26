@@ -12,13 +12,12 @@ import java.util.stream.Stream;
 
 import javax.mail.MessagingException;
 
-import freemarker.template.TemplateException;
-
 import static java.util.stream.Collectors.toList;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.security.MessageDigest;
+import java.sql.Date;
 
 import static java.util.Comparator.comparing;
 
@@ -33,8 +32,10 @@ import static java.util.Comparator.comparing;
  */
 public class App 
 {
-	public static void main( String[] args ) throws MessagingException, IOException, TemplateException, InstantiationException, IllegalAccessException
+	public static void main( String[] args ) throws MessagingException, IOException, InstantiationException, IllegalAccessException
 	{     		
+		System.out.println(System.currentTimeMillis());
+		
 		PrintTest test = new PrintTest();
 		Class ctest = test.getClass();
 		try {
@@ -93,9 +94,6 @@ public class App
 		
 		Class c2 = bb.getClass();
 		System.out.println(c1==c2);
-		
-		FreemarkerTest freemarkerTest = new FreemarkerTest();
-		freemarkerTest.foo();
 		
 		System.out.println("main主线程开始");
 		
