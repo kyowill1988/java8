@@ -12,10 +12,14 @@ public class FileTest {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		
-		testCreateFileWithCreateNewFile();
-		testCopyFile();
-		Thread.sleep(5000);
-		testDeleteFile();
+//		testCreateFileWithCreateNewFile();
+//		testCopyFile();
+//		Thread.sleep(5000);
+//		testDeleteFile();
+		
+		testCreateDirectoryWithMkdir();
+		testCreateDirectoryWithMkdirs();
+		
 	}
 
 	private void test() throws IOException{
@@ -94,6 +98,23 @@ public class FileTest {
 		
 	}
 	
+	private static void testCreateDirectoryWithMkdir(){
+		
+		File file = new File("D:\\t");
+		if(!file.exists()){
+			file.mkdir();
+			System.out.println("目录创建成功");
+		}
+	}
+
+	private static void testCreateDirectoryWithMkdirs(){
+
+		File file = new File("D:\\t\\t1");
+		if(!file.exists()){
+			file.mkdir();
+			System.out.println("目录创建成功");
+		}
+	}
 
 	private static void testFileAPI(String path){
 
