@@ -34,6 +34,8 @@ public class App
 {
 	public static void main( String[] args ) throws MessagingException, IOException, InstantiationException, IllegalAccessException
 	{     		
+		BlockTest blt = new BlockTest();
+		BlockTest blt2 = new BlockTest("ttt");
 		
 		System.out.println(System.currentTimeMillis());
 		

@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -47,6 +49,9 @@ public class ServletTest extends HttpServlet {
 		Cookie cookie = new Cookie("address","myAddress");
 		cookie.setMaxAge(3600);
 		response.addCookie(cookie);
+		
+		ServletContext application =  this.getServletContext();
+		application.setAttribute("myName", "test");
 		
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
