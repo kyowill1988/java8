@@ -66,6 +66,7 @@ public class FileTest {
 		String prefix = "temp_";
 		String suffix = ".log";
 		File directory = new File("D:\\test");
+		
 		File.createTempFile(prefix, suffix, directory);
 		System.out.println("文件生成成功！");
 		
@@ -80,9 +81,13 @@ public class FileTest {
 		}
 	}
 	
-	private static void testCopyFile(){
+	private static void testCopyFile() throws IOException{
 		
 		File sourceFile = new File("D:\\test\\456.txt");
+		if(!sourceFile.exists()){
+			throw new IOException("文件不存在！");
+		}
+		
 		File destoryFile = new File("D:\\test1\\666.txt");
 		sourceFile.renameTo(destoryFile);
 		System.out.println("文件移动成功！");
