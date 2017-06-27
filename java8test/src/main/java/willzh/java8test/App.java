@@ -34,6 +34,9 @@ public class App
 {
 	public static void main( String[] args ) throws MessagingException, IOException, InstantiationException, IllegalAccessException
 	{     		
+		System.out.println(ExceptionTest.test("1"));
+		System.out.println(ExceptionTest.test(null));
+		
 		BlockTest blt = new BlockTest();
 		BlockTest blt2 = new BlockTest("ttt");
 		
