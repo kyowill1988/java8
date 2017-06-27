@@ -10,7 +10,15 @@ import java.util.Date;
 
 public class FileTest {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InterruptedException {
+		
+		testCreateFileWithCreateNewFile();
+		testCopyFile();
+		Thread.sleep(5000);
+		testDeleteFile();
+	}
+
+	private void test() throws IOException{
 		//封装数据源
 		File srcfile = new File("D:/123");
 		//封装目的地
@@ -28,7 +36,7 @@ public class FileTest {
 			CopyFolder(f,newfile);
 		}
 	}
-
+	
 	private static void CopyFolder(File f, File newfile) throws IOException{
 		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(f));
 		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(newfile));
@@ -43,9 +51,47 @@ public class FileTest {
 		bis.close();
 	}
 
+
+	private static void testCreateFileWithCreateNewFile() throws IOException{
+
+		File file = new File("D:\\test\\456.txt");
+		if(!file.exists()){
+			file.createNewFile();
+			System.out.println("文件生成成功！");
+		}
+	}
 	
-	private static void testFileAPI(String path){
+	private static void testFileCreateWithCreateTempFile() throws IOException{
 		
+		String prefix = "temp_";
+		String suffix = ".log";
+		File directory = new File("D:\\test");
+		File.createTempFile(prefix, suffix, directory);
+		System.out.println("文件生成成功！");
+		
+	}
+	
+	private static void testDeleteFile(){
+		
+		File file = new File("D:\\test\\456.txt");
+		if(file.exists()){
+			file.delete();
+			System.out.println("文件删除成功!");
+		}
+	}
+	
+	private static void testCopyFile(){
+		
+		File sourceFile = new File("D:\\test\\456.txt");
+		File destoryFile = new File("D:\\test1\\666.txt");
+		sourceFile.renameTo(destoryFile);
+		System.out.println("文件移动成功！");
+		
+	}
+	
+
+	private static void testFileAPI(String path){
+
 		File file = new File(path);
 		System.out.println("*****文件属性测试 *****");
 		System.out.println("文件是否存在："+file.exists());
@@ -61,7 +107,7 @@ public class FileTest {
 		System.out.println("是否为隐藏文件:"+file.isHidden());
 		System.out.println("最后修改时间:"+new Date(file.lastModified()));
 		System.out.println("文件长度:"+file.length());
-		
+
 	}
 
 
