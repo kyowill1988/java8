@@ -34,10 +34,12 @@ public class App
 {
 	public static void main( String[] args ) throws MessagingException, IOException, InstantiationException, IllegalAccessException
 	{     		
+		
 		System.out.println(System.currentTimeMillis());
 		
 		PrintTest test = new PrintTest();
 		Class ctest = test.getClass();
+		
 		try {
 			test.print(1, 1);
 			Method method = ctest.getMethod("print", int.class,int.class);
