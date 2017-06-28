@@ -25,7 +25,6 @@ public class FileTest {
 		//testCreateDirectoryWithMkdirs();
 		
 		fileInputStreamTest();
-		fileOutputStreamTest();
 		
 	}
 
@@ -153,8 +152,11 @@ public class FileTest {
 			fis = new FileInputStream("D:\\test\\123.txt");
 			isr = new InputStreamReader(fis,"UTF-8");
 			br = new BufferedReader(isr);
-			String b = br.readLine();
-			System.out.println(b);
+			String tmp = null;
+			while((tmp=br.readLine())!=null){
+				System.out.println(tmp);
+			}
+			
 		}catch(IOException e){
 			e.printStackTrace();
 		}finally{
