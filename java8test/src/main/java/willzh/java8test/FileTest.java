@@ -2,10 +2,14 @@ package willzh.java8test;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Date;
 
 public class FileTest {
@@ -17,8 +21,11 @@ public class FileTest {
 //		Thread.sleep(5000);
 //		testDeleteFile();
 		
-		testCreateDirectoryWithMkdir();
-		testCreateDirectoryWithMkdirs();
+		//testCreateDirectoryWithMkdir();
+		//testCreateDirectoryWithMkdirs();
+		
+		fileInputStreamTest();
+		fileOutputStreamTest();
 		
 	}
 
@@ -135,6 +142,91 @@ public class FileTest {
 		System.out.println("文件长度:"+file.length());
 
 	}
+	
+	private static void fileInputStreamTest(){
 
+		FileInputStream fis = null;
+		InputStreamReader isr = null;
+		BufferedReader br = null;
+		
+		try{
+			fis = new FileInputStream("D:\\test\\123.txt");
+			isr = new InputStreamReader(fis,"UTF-8");
+			br = new BufferedReader(isr);
+			String b = br.readLine();
+			System.out.println(b);
+		}catch(IOException e){
+			e.printStackTrace();
+		}finally{
+			if(br != null){
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(isr != null){
+				try {
+					isr.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(fis != null){
+				try {
+					fis.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+	
+	
+	private static void fileOutputStreamTest(){
+
+		FileOutputStream fos = null;
+		OutputStreamWriter osw = null;
+		BufferedWriter bw = null;
+		
+		try{
+			fos = new FileOutputStream("D:\\test\\123.txt");
+			osw = new OutputStreamWriter(fos,"UTF-8");
+			bw = new BufferedWriter(osw);
+			//原文覆盖
+			bw.write("世界第一");
+		}catch(IOException e){
+			e.printStackTrace();
+		}finally{
+			if(bw != null){
+				try {
+					bw.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(osw != null){
+				try {
+					osw.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(fos != null){
+				try {
+					fos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+	
 
 }
