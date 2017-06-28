@@ -6,10 +6,12 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.RandomAccessFile;
 import java.util.Date;
 
 public class FileTest {
@@ -24,7 +26,10 @@ public class FileTest {
 		//testCreateDirectoryWithMkdir();
 		//testCreateDirectoryWithMkdirs();
 		
-		fileInputStreamTest();
+		//fileInputStreamTest();
+		
+		testRandomAccessFileWriter();
+		testRandomAccessFileReader();
 		
 	}
 
@@ -227,6 +232,26 @@ public class FileTest {
 				}
 			}
 		}
+		
+	}
+	
+	
+	private static void testRandomAccessFileWriter() throws IOException{
+		
+		RandomAccessFile rf = new RandomAccessFile("D:\\test\\123.txt","rw");
+		//测试文件末尾写
+		rf.seek(rf.length());
+		rf.writeByte('A');
+		rf.writeUTF("我");
+		rf.close();
+	}
+	
+	private static void testRandomAccessFileReader() throws IOException {
+		
+		RandomAccessFile rf = new RandomAccessFile("D:\\test\\123.txt", "r");
+		System.out.println((char)rf.readByte());
+		System.out.println((char)rf.readByte());
+		rf.close();
 		
 	}
 	
