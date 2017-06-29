@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 import java.util.Date;
 
 public class FileTest {
@@ -34,7 +36,10 @@ public class FileTest {
 		//testRandomAccessFileReader();
 		
 		//testDataWriter();
-		testDataReader();
+		//testDataReader();
+		
+		//lockFileWithRandomAccessFile();
+		lockFileWithFileLock();
 		
 	}
 
@@ -320,6 +325,30 @@ public class FileTest {
 	}
 	
 	
+	private static void lockFileWithRandomAccessFile() throws IOException{
+		
+		RandomAccessFile rf = new RandomAccessFile("D:\\test\\123.txt","rws");
+		rf.writeUTF("测试");
+		rf.close();
+		
+	}
+	
+	
+	private static void lockFileWithFileLock() throws IOException{
+		
+		RandomAccessFile rf = new RandomAccessFile("D:\\test\\123.txt","rw");
+		FileChannel fc = rf.getChannel();
+		FileLock fl = fc.tryLock();
+		if(fl.isValid()){
+			System.out.println("该文档允许操作");
+			fl.release();
+		}else{
+			System.out.println("其他用户正在对该文档进行操作");
+		}
+		
+		
+		
+	}
 	
 
 }
