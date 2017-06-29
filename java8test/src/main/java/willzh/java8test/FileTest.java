@@ -4,6 +4,8 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,8 +30,11 @@ public class FileTest {
 		
 		//fileInputStreamTest();
 		
-		testRandomAccessFileWriter();
-		testRandomAccessFileReader();
+		//testRandomAccessFileWriter();
+		//testRandomAccessFileReader();
+		
+		//testDataWriter();
+		testDataReader();
 		
 	}
 
@@ -254,6 +259,67 @@ public class FileTest {
 		rf.close();
 		
 	}
+	
+	private static void testDataWriter(){
+		
+		FileOutputStream fos = null;
+		DataOutputStream dos = null;
+		String file = "D:\\test\\123.txt";
+		try{
+		fos = new FileOutputStream(file,true);
+		dos = new DataOutputStream(fos);
+		dos.write(1);
+		dos.writeUTF("测试");
+		dos.writeBoolean(true);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try {
+				dos.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			try {
+				fos.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	
+	}
+	
+	private static void testDataReader(){
+		
+		FileInputStream fis = null;
+		DataInputStream dis = null;
+		String file = "D:\\test\\123.txt";
+		try {
+			fis = new FileInputStream(file);
+			dis = new DataInputStream(fis);
+			try {
+				System.out.println(dis.read());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				dis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				fis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+	}
+	
+	
 	
 
 }
