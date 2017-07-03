@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.controller;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,8 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.example.demo.DemoApplication;
-import com.example.demo.controller.HelloController;
+import com.example.DemoApplication;
+import com.example.controller.HelloController;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
