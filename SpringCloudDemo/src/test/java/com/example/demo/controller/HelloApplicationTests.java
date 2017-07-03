@@ -37,5 +37,4 @@ public class HelloApplicationTests {
 		.andExpect(content().string(equalTo("Hello World")));
 	}
 	
-	
 }
